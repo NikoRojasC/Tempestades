@@ -1,0 +1,20 @@
+{
+  "name": "tweet-manager",
+  "version": "1.0.0",
+  "description": "Sistema que permite gestionar una o varias cuentas de Twitter",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UNIZAR-STW-2017/Tempestades.git"
+  },
+  "author": "Tempestades",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UNIZAR-STW-2017/Tempestades/issues"
+  },
+  "homepage": "https://github.com/UNIZAR-STW-2017/Tempestades#readme"
+}
