@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/UNIZAR-STW-2017/Tempestades/issues"
   },
-  "homepage": "https://github.com/UNIZAR-STW-2017/Tempestades#readme"
+  "homepage": "https://github.com/UNIZAR-STW-2017/Tempestades#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "fs": "0.0.1-security",
+    "swagger-jsdoc": "^1.9.2"
+  }
 }

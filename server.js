@@ -1,19 +1,38 @@
-var http = require("http");
-var url = require("url");
+var express = require("express");
+var bodyParser = require("body-parser");
+var swaggerJSDoc = require('swagger-jsdoc');
+var app = express();
 
-function start(route, handle){
-  function onRequest(request, response) {
-    var pathname = url.parse(request.url).pathname;
-    console.log("Request for " + pathname + " received!");
-    route(handle, pathname, response, request);
-  }
+// swagger definition
+var swaggerDefinition = {
+  info: {
+    title: 'API de gestión de memos',
+    version: '1.0.0',
+    description: 'Descripción del API del servicio de memos a la cual se accede'
+      + ' a traves de usuario y contraseña.'
+  },
+  host: 'localhost:8080',
+  basePath: '/',
+};
 
-  function execute(someFunction, value){
-    someFunction(value);
-  }
+// options for the swagger docs
+var options = {
+  // import swaggerDefinitions
+  swaggerDefinition: swaggerDefinition,
+  // path to the API docs
+  apis: ['*.js'],
+};
 
-  http.createServer(onRequest).listen(8080);
-  execute(function(word) { console.log(word) }, " --- Server has started!");
-}
+// initialize swagger-jsdoc
+var swaggerSpec = swaggerJSDoc(options);
 
-exports.start = start;
+app.use(express.static('public'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+var routes = require("./app/routers/router.js")(app, swaggerSpec);
+
+var server = app.listen(8080, function () {
+  console.log(" --- Server started in port: %s", server.address().port);
+});
